@@ -6,7 +6,7 @@ const getYear = () => {
   return new Date().getFullYear();
 };
 
-const welcomeMessage = `Welcome to my cyberspace, fellow human.
+const welcomeMessage = `Welcome to cyberspace, fellow human.
 
 Type 'help' to view a list of available commands.
 `;
@@ -21,7 +21,7 @@ const bannerCondensed =
   '  \u00A9 ' +
   getYear();
 
-const prompt = '>';
+const prompt = '>>>';
 
 function App() {
   return (

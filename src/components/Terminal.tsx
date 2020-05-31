@@ -5,7 +5,6 @@ import InputArea from './InputArea';
 import ErrorMessage from './ErrorMessage';
 import WelcomeMessage from './WelcomeMessage';
 
-// Just a little helper function so I don't have to continually update my age
 const getAge = (birthDate: Date) => {
   var today = new Date();
   var age = today.getFullYear() - birthDate.getFullYear();
@@ -30,7 +29,7 @@ type TerminalProps = {
   welcomeMessage?: string;
 };
 const Terminal = (props: TerminalProps) => {
-  const { terminalPrompt = '>', banner, welcomeMessage } = props;
+  const { terminalPrompt = '>>', banner, welcomeMessage } = props;
   const [output, setOutput] = useState<(string | JSX.Element)[]>([]);
   const [history, setHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(3);
@@ -78,25 +77,25 @@ const Terminal = (props: TerminalProps) => {
   const commands: { [key in EchoCommand]: JSX.Element } = {
     help: (
       <div>
-        <p>
+        <p className="terminal-instructions">
           Type any of the commands below to get some more info. Press [tab] to autocomplete. Press
           '.' to show command hints.
         </p>
         <dl>
           <dt>about</dt>
-          <dd>Stop stalking me</dd>
+          <dd>My brief self-introduction</dd>
           <dt>projects</dt>
           <dd>Yeah, I've made some cool stuff before</dd>
           <dt>skills</dt>
-          <dd>I'm pretty good at some things</dd>
+          <dd>Programming languages & frameworks etc.</dd>
           <dt>awards</dt>
           <dd>A bit of boasting</dd>
           <dt>repo</dt>
           <dd>Take a look at some of my work</dd>
           <dt>download_cv</dt>
-          <dd>Check out my CV [pdf - 168KB]</dd>
+          <dd>Check out my resume in PDF</dd>
           <dt>contact</dt>
-          <dd>Bring on the spam</dd>
+          <dd>My email, LinkedIn, Github etc.</dd>
           <dt>website</dt>
           <dd>How I built this</dd>
           <dt>all</dt>
@@ -109,52 +108,23 @@ const Terminal = (props: TerminalProps) => {
     about: (
       <div>
         <p>
-          Hey there! Thanks for taking such a keen interest in me. Hopefully you're not gonna spam
-          or stalk me... Okay, I guess if you must stalk me, just give me fair warning so I can look
-          presentable when you arrive at my door.
+          Hi! My name is {glow('Ian Yi-En Pan')}. I'm {getAge(new Date(1998, 1, 2))} year old, born
+          and raised in the beautiful city Taipei, and currently travel between{' '}
+          {glow('Cupertino, Hong Kong, and my hometown')}.
         </p>
         <p>
-          Right, so, where to begin? Well, my parents met in... Nah, just kidding.
-          <br />
-          As you probably know, my name is {glow('Craig Feldman')}. I'm a{' '}
-          {getAge(new Date(1992, 12, 23))} year old {glow('Computer Scientist')} born and bred in
-          the beautiful South Africa and currently living in Cape Town.
+          I'm a penultimate-year {glow('Computer Science')} undergraduate and Google DSC Core Team
+          Member, former R3 Corda Blockchain Software Engineer Intern at CryptoBLK, current STEM &
+          coding instructor at FCA, cybersecurity world finalist team leader, back-end developer and
+          Python instructor at Circle-Coding CUHK. I've received international awards in marketing,
+          and have in-depth experience with investment analysis and software development.
         </p>
         <p>
-          I graduated with distinction from the University of Cape Town with a Bachelor of Business
-          Science degree in Computer Science. It comprised of four years of computer science
-          courses, as well as many business courses (for example, I completed three years of
-          economics, stats, and finance).
-        </p>
-        <p>
-          I also have an MSc degree in Computer Science from the University of Oxford, where I was
-          awarded a full academic scholarship. Studying abroad was an amazing experience -
-          highlights include early morning rowing, croquet, formal dinners, and just exploring
-          Oxford with amazing people and friends.
-        </p>
-        <p>
-          Some of my interests include{' '}
-          {glow('machine learning, computer security, and cryptography')}. I'm also pretty into fly
-          fishing!
-        </p>
-        <p>
-          My previous formal work experience includes working on asset management software at{' '}
-          <a target="_blank" rel="noopener noreferrer" href="https://www.fundamental.net">
-            Fundamental Software
-          </a>
-          , as well as working for a great content creation app called{' '}
-          <a target="_blank" rel="noopener noreferrer" href="https://madewithover.com">
-            Over
-          </a>
-          .
-        </p>
-        <p>
-          Nowadays I'm developing a method to download food... I wish! I am currently focusing on
-          some personal projects and am bootstrapping my own startup (check it out,{' '}
-          <a target="_blank" rel="noopener noreferrer" href="https://weaverworks.co.za">
-            here
-          </a>
-          ) but please feel free to get in touch with me to discuss any cool opportunities!
+          I love combat sports, especially Boxing & Muay Thai. I train weekly and spar with my
+          friends in my free time.
+          <br />I was the {glow('vocalist and rhythm guitarist')} in a local alternative rock band
+          based in my hometown. I still write songs every now and then, mostly composing on guitar
+          and piano.
         </p>
         <p>
           My contact details can be found by typing 'contact', and if you would like to check out my
@@ -190,12 +160,16 @@ const Terminal = (props: TerminalProps) => {
         <dl>
           <dt>Email</dt>
           <dd>
-            <a href="mailto:craig.feldy@gmail.com">craig.feldy@gmail.com</a>
+            <a href="mailto:craig.feldy@gmail.com">ianpan870102@gmail.com</a>
           </dd>
-          <dt>Smoke signals</dt>
-          <dd>general Cape Town region</dd>
-          <dt>myspace</dt>
-          <dd>just kidding</dd>
+          <dt>LinkedIn</dt>
+          <dd>
+            <a href="https://www.linkedin.com/in/ian-yi-en-pan-543947156/">Ian Yi-En Pan</a>
+          </dd>
+          <dt>GitHub</dt>
+          <dd>
+            <a href="https://github.com/ianpan870102">ianpan870102</a>
+          </dd>
         </dl>
       </>
     ),
@@ -259,57 +233,37 @@ const Terminal = (props: TerminalProps) => {
     skills: (
       <>
         <dl>
-          <dt>Kotlin</dt>
+          <dt>C/C++</dt>
           <dd>
-            ##{' '}
-            <span style={{ color: '#00DE12', textShadow: '0 0 5px #00DE12' }}>#############</span>{' '}
-            ##
-          </dd>
-          <dt>Java</dt>
-          <dd>
-            ## <span style={{ color: '#42D100', textShadow: '0 0 5px #42D100' }}>###########</span>
-            {'   '}
-            ##
-          </dd>
-          <dt>TypeScript</dt>
-          <dd>
-            ## <span style={{ color: '#42D100', textShadow: '0 0 5px #42D100' }}>###########</span>
-            {'   '}
-            ##
-          </dd>
-          <dt>C# and C++</dt>
-          <dd>
-            ## <span style={{ color: '#99D100', textShadow: '0 0 5px #99D100' }}>########</span>
-            {'      '}
-            ##
+            [<span style={{ color: '#00DE12', textShadow: '0 0 5px #00DE12' }}>#############</span>{' '}
+            ]
           </dd>
           <dt>Python</dt>
           <dd>
-            ## <span style={{ color: '#D16200', textShadow: '0 0 5px #D16200' }}>#####</span>
-            {'         '}
-            ##
+            [<span style={{ color: '#00DE12', textShadow: '0 0 5px #00DE12' }}>#############</span>{' '}
+            ]
+          </dd>
+          <dt>Java</dt>
+          <dd>
+            [<span style={{ color: '#42D100', textShadow: '0 0 5px #42D100' }}>###########</span>
+            {'   '}]
+          </dd>
+          <dt>Machine Learning/TensorFlow/Scikit-Learn</dt>
+          <dd>
+            [<span style={{ color: '#42D100', textShadow: '0 0 5px #42D100' }}>###########</span>
+            {'   '}]
+          </dd>
+          <dt>Kotlin</dt>
+          <dd>
+            [<span style={{ color: '#42D100', textShadow: '0 0 5px #42D100' }}>#####</span>
+            {'         '}]
           </dd>
         </dl>
         <dl>
-          <dt>GCP / Firebase</dt>
+          <dt>JavaScript/React/Web dev.</dt>
           <dd>
-            ## <span style={{ color: '#99D100', textShadow: '0 0 5px 99D100' }}>#########</span>
-            {'     '}
-            ##
-          </dd>
-
-          <dt>React</dt>
-          <dd>
-            ## <span style={{ color: '#00DE12', textShadow: '0 0 5px #00DE12' }}>############</span>
-            {'  '}
-            ##
-          </dd>
-
-          <dt>General web development</dt>
-          <dd>
-            ## <span style={{ color: '#5BD100', textShadow: '0 0 5px 5BD100' }}>#########</span>
-            {'     '}
-            ##
+            [<span style={{ color: '#00DE12', textShadow: '0 0 5px #00DE12' }}>############</span>
+            {'  '}]
           </dd>
         </dl>
       </>

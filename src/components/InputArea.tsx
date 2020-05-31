@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 type InputAreaProps = {
   terminalPrompt: string;
   setOutput: React.Dispatch<React.SetStateAction<(string | JSX.Element)[]>>;
   processCommand: (input: string) => void;
-  getHistory: (direction: "up" | "down") => string;
+  getHistory: (direction: 'up' | 'down') => string;
   getAutocomplete: (input: string) => string;
   inputRef: React.RefObject<HTMLInputElement>;
 };
 const InputArea = (props: InputAreaProps) => {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
   /**
    * Sets the input state to the value of the input.
    *
@@ -18,27 +18,25 @@ const InputArea = (props: InputAreaProps) => {
    */
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
-    if (inputValue.charAt(inputValue.length - 1) === ".") {
-      setInput(
-        props.getAutocomplete(inputValue.substring(0, inputValue.length - 1))
-      );
+    if (inputValue.charAt(inputValue.length - 1) === '.') {
+      setInput(props.getAutocomplete(inputValue.substring(0, inputValue.length - 1)));
     } else setInput(inputValue);
   };
   const handleInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     switch (event.key) {
-      case "Enter":
+      case 'Enter':
         props.processCommand(input);
-        setInput("");
+        setInput('');
         break;
-      case "ArrowUp":
+      case 'ArrowUp':
         event.preventDefault();
-        setInput(props.getHistory("up"));
+        setInput(props.getHistory('up'));
         break;
-      case "ArrowDown":
+      case 'ArrowDown':
         event.preventDefault();
-        setInput(props.getHistory("down"));
+        setInput(props.getHistory('down'));
         break;
-      case "Tab":
+      case 'Tab':
         // Provide autocomplete on tab. For mobile, we have to handle autocomplete in the input's onChange event.
         event.preventDefault();
         setInput(props.getAutocomplete(input));

@@ -8,18 +8,19 @@
 
 .terminal-content {
   padding: 20px;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 20px;
   white-space: pre-wrap;
-  color: #aaa;
+  color: #aabbaa;
   font-family: 'Consolas', 'Hack', 'Source Code Pro', 'Menlo', monospace;
   display: flex;
   flex-direction: column;
+  text-shadow: 0 0 1px #00ffbb;
 }
 
 .terminal-banner {
-  color: teal;
-  text-shadow: 0 0 5px teal;
+  color: #aaaaaa;
+  text-shadow: 0 0 15px #0088ff;
   line-height: normal;
   font-weight: bold;
   font-size: calc(1vw + 7px);
@@ -48,7 +49,7 @@
 
 .terminal-command-output dt {
   color: #eeeeee;
-  text-shadow: 0 0 4px #eeeeee;
+  text-shadow: 0 0 6px #ffffff;
 }
 
 .terminal-command-output dd {
@@ -85,11 +86,12 @@
   font-family: inherit;
   font-size: inherit;
   font-size: inherit;
-  color: rgb(240, 191, 129);
+  color: #ffcb08;
   background: transparent;
-  border: 0px;
+  border: 0px; /* no textbox outline */
   outline: none; /* no highlight on focus */
   width: 100%;
+  text-shadow: 0 0 2px #ff7e00;
 }
 
 .terminal-error-group {
@@ -98,19 +100,25 @@
 }
 
 .terminal-error {
-  color: red;
+  color: #bb3333;
+  text-shadow: 0 0 3px #ff0000;
 }
 
 .terminal-glow {
   color: #eeeeee;
-  text-shadow: 0 0 4px #eeeeee;
+  text-shadow: 0 0 5px #eeeeee;
 }
 
-a {
-  color: purple;
+a { /* links */
+  color: #aaaaaa;
+  text-shadow: 0 0 5px #66bbff;
 }
 a:hover {
-  color: black;
-  background-color: purple;
-  text-decoration: none;
+  color: #dddddd;
+  text-shadow: 0 0 5px #ffffff;
+}
+
+.terminal-instructions {
+  color: #aaaaaa;
+  text-shadow: 0 0 5px #66bbff;
 }
