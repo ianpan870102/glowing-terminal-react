@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import Banner from "./Banner";
-import TerminalOutput from "./TerminalOutput";
-import InputArea from "./InputArea";
-import ErrorMessage from "./ErrorMessage";
-import WelcomeMessage from "./WelcomeMessage";
+import React, { useState, useEffect } from 'react';
+import Banner from './Banner';
+import TerminalOutput from './TerminalOutput';
+import InputArea from './InputArea';
+import ErrorMessage from './ErrorMessage';
+import WelcomeMessage from './WelcomeMessage';
 
 // Just a little helper function so I don't have to continually update my age
 const getAge = (birthDate: Date) => {
@@ -17,7 +17,7 @@ const getAge = (birthDate: Date) => {
 };
 
 const downloadFile = (uri: string, downloadName: string) => {
-  const link = document.createElement("a");
+  const link = document.createElement('a');
   link.download = downloadName;
   link.href = uri;
   link.click();
@@ -30,7 +30,7 @@ type TerminalProps = {
   welcomeMessage?: string;
 };
 const Terminal = (props: TerminalProps) => {
-  const { terminalPrompt = ">", banner, welcomeMessage } = props;
+  const { terminalPrompt = '>', banner, welcomeMessage } = props;
   const [output, setOutput] = useState<(string | JSX.Element)[]>([]);
   const [history, setHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(3);
@@ -44,17 +44,17 @@ const Terminal = (props: TerminalProps) => {
   useEffect(scrollLastCommandTop, [output]);
 
   const echoCommands = [
-    "help",
-    "about",
-    "projects",
-    "contact",
-    "awards",
-    "repo",
-    "skills",
-    "website",
+    'help',
+    'about',
+    'projects',
+    'contact',
+    'awards',
+    'repo',
+    'skills',
+    'website',
   ] as const;
   type EchoCommand = typeof echoCommands[number];
-  const utilityCommands = ["clear", "all", "download_cv"] as const;
+  const utilityCommands = ['clear', 'all', 'download_cv'] as const;
   type UtilityCommand = typeof utilityCommands[number];
   const allCommands = [...echoCommands, ...utilityCommands] as const;
   type Command = typeof allCommands[number];
@@ -79,10 +79,8 @@ const Terminal = (props: TerminalProps) => {
     help: (
       <div>
         <p>
-          Wow, I thought the only people who would visit this site would be bots
-          and spammers, guess I was wrong. Just type any of the commands below
-          to get some more info. You can even type a few letters and press [tab]
-          or '.' to autocomplete.
+          Type any of the commands below to get some more info. Press [tab] to autocomplete. Press
+          '.' to show command hints.
         </p>
         <dl>
           <dt>about</dt>
@@ -111,105 +109,78 @@ const Terminal = (props: TerminalProps) => {
     about: (
       <div>
         <p>
-          Hey there! Thanks for taking such a keen interest in me. Hopefully
-          you're not gonna spam or stalk me... Okay, I guess if you must stalk
-          me, just give me fair warning so I can look presentable when you
-          arrive at my door.
+          Hey there! Thanks for taking such a keen interest in me. Hopefully you're not gonna spam
+          or stalk me... Okay, I guess if you must stalk me, just give me fair warning so I can look
+          presentable when you arrive at my door.
         </p>
         <p>
-          Right, so, where to begin? Well, my parents met in... Nah, just
-          kidding.
+          Right, so, where to begin? Well, my parents met in... Nah, just kidding.
           <br />
-          As you probably know, my name is {glow("Craig Feldman")}. I'm a{" "}
-          {getAge(new Date(1992, 12, 23))} year old {glow("Computer Scientist")}{" "}
-          born and bred in the beautiful South Africa and currently living in
-          Cape Town.
+          As you probably know, my name is {glow('Craig Feldman')}. I'm a{' '}
+          {getAge(new Date(1992, 12, 23))} year old {glow('Computer Scientist')} born and bred in
+          the beautiful South Africa and currently living in Cape Town.
         </p>
         <p>
-          I graduated with distinction from the University of Cape Town with a
-          Bachelor of Business Science degree in Computer Science. It comprised
-          of four years of computer science courses, as well as many business
-          courses (for example, I completed three years of economics, stats, and
-          finance).
+          I graduated with distinction from the University of Cape Town with a Bachelor of Business
+          Science degree in Computer Science. It comprised of four years of computer science
+          courses, as well as many business courses (for example, I completed three years of
+          economics, stats, and finance).
         </p>
         <p>
-          I also have an MSc degree in Computer Science from the University of
-          Oxford, where I was awarded a full academic scholarship. Studying
-          abroad was an amazing experience - highlights include early morning
-          rowing, croquet, formal dinners, and just exploring Oxford with
-          amazing people and friends.
+          I also have an MSc degree in Computer Science from the University of Oxford, where I was
+          awarded a full academic scholarship. Studying abroad was an amazing experience -
+          highlights include early morning rowing, croquet, formal dinners, and just exploring
+          Oxford with amazing people and friends.
         </p>
         <p>
-          Some of my interests include{" "}
-          {glow("machine learning, computer security, and cryptography")}. I'm
-          also pretty into fly fishing!
+          Some of my interests include{' '}
+          {glow('machine learning, computer security, and cryptography')}. I'm also pretty into fly
+          fishing!
         </p>
         <p>
-          My previous formal work experience includes working on asset
-          management software at{" "}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.fundamental.net"
-          >
+          My previous formal work experience includes working on asset management software at{' '}
+          <a target="_blank" rel="noopener noreferrer" href="https://www.fundamental.net">
             Fundamental Software
           </a>
-          , as well as working for a great content creation app called{" "}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://madewithover.com"
-          >
+          , as well as working for a great content creation app called{' '}
+          <a target="_blank" rel="noopener noreferrer" href="https://madewithover.com">
             Over
           </a>
           .
         </p>
         <p>
-          Nowadays I'm developing a method to download food... I wish! I am
-          currently focusing on some personal projects and am bootstrapping my
-          own startup (check it out,{" "}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://weaverworks.co.za"
-          >
+          Nowadays I'm developing a method to download food... I wish! I am currently focusing on
+          some personal projects and am bootstrapping my own startup (check it out,{' '}
+          <a target="_blank" rel="noopener noreferrer" href="https://weaverworks.co.za">
             here
           </a>
-          ) but please feel free to get in touch with me to discuss any cool
-          opportunities!
+          ) but please feel free to get in touch with me to discuss any cool opportunities!
         </p>
         <p>
-          My contact details can be found by typing 'contact', and if you would
-          like to check out my CV, simply type 'download_CV'.
+          My contact details can be found by typing 'contact', and if you would like to check out my
+          CV, simply type 'download_CV'.
         </p>
       </div>
     ),
     projects: (
       <>
         <p>
-          I'm always working on comp sciey (not really a word) things. Why don't
-          you check out a few of my public code repositories? Just type 'repo'
-          to get the links.
+          I'm always working on comp sciey (not really a word) things. Why don't you check out a few
+          of my public code repositories? Just type 'repo' to get the links.
         </p>
         <p>
-          I have my own startup called{" "}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://weaverworks.co.za"
-          >
+          I have my own startup called{' '}
+          <a target="_blank" rel="noopener noreferrer" href="https://weaverworks.co.za">
             WeaverWorks
-          </a>{" "}
-          that provides property managers and buildings with some really cool
-          software. The project uses TypeScript, Node.js, React (with
-          Material-UI components) and Firebase.
+          </a>{' '}
+          that provides property managers and buildings with some really cool software. The project
+          uses TypeScript, Node.js, React (with Material-UI components) and Firebase.
         </p>
         <p>
-          You can also check out my MSc thesis{" "}
+          You can also check out my MSc thesis{' '}
           <a href="MSc_Thesis.pdf" download="Craig Feldman - MSc Thesis.pdf">
-            An investigation into the applicability of a blockchain based voting
-            system
-          </a>{" "}
+            An investigation into the applicability of a blockchain based voting system
+          </a>{' '}
           - this one took a while!
         </p>
       </>
@@ -271,24 +242,15 @@ const Terminal = (props: TerminalProps) => {
       <>
         <ul>
           <li>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://github.com/craig-feldman"
-            >
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/craig-feldman">
               GitHub
-            </a>{" "}
-            - Unfortunately, I could only make a small subset of my projects
-            public.
+            </a>{' '}
+            - Unfortunately, I could only make a small subset of my projects public.
           </li>
           <li>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://bitbucket.org/fldcra001"
-            >
+            <a target="_blank" rel="noopener noreferrer" href="https://bitbucket.org/fldcra001">
               Bitbucket
-            </a>{" "}
+            </a>{' '}
             - A few university projects.
           </li>
         </ul>
@@ -299,77 +261,54 @@ const Terminal = (props: TerminalProps) => {
         <dl>
           <dt>Kotlin</dt>
           <dd>
-            ##{" "}
-            <span style={{ color: "#00DE12", textShadow: "0 0 5px #00DE12" }}>
-              #############
-            </span>{" "}
+            ##{' '}
+            <span style={{ color: '#00DE12', textShadow: '0 0 5px #00DE12' }}>#############</span>{' '}
             ##
           </dd>
           <dt>Java</dt>
           <dd>
-            ##{" "}
-            <span style={{ color: "#42D100", textShadow: "0 0 5px #42D100" }}>
-              ###########
-            </span>
-            {"   "}
+            ## <span style={{ color: '#42D100', textShadow: '0 0 5px #42D100' }}>###########</span>
+            {'   '}
             ##
           </dd>
           <dt>TypeScript</dt>
           <dd>
-            ##{" "}
-            <span style={{ color: "#42D100", textShadow: "0 0 5px #42D100" }}>
-              ###########
-            </span>
-            {"   "}
+            ## <span style={{ color: '#42D100', textShadow: '0 0 5px #42D100' }}>###########</span>
+            {'   '}
             ##
           </dd>
           <dt>C# and C++</dt>
           <dd>
-            ##{" "}
-            <span style={{ color: "#99D100", textShadow: "0 0 5px #99D100" }}>
-              ########
-            </span>
-            {"      "}
+            ## <span style={{ color: '#99D100', textShadow: '0 0 5px #99D100' }}>########</span>
+            {'      '}
             ##
           </dd>
           <dt>Python</dt>
           <dd>
-            ##{" "}
-            <span style={{ color: "#D16200", textShadow: "0 0 5px #D16200" }}>
-              #####
-            </span>
-            {"         "}
+            ## <span style={{ color: '#D16200', textShadow: '0 0 5px #D16200' }}>#####</span>
+            {'         '}
             ##
           </dd>
         </dl>
         <dl>
           <dt>GCP / Firebase</dt>
           <dd>
-            ##{" "}
-            <span style={{ color: "#99D100", textShadow: "0 0 5px 99D100" }}>
-              #########
-            </span>
-            {"     "}
+            ## <span style={{ color: '#99D100', textShadow: '0 0 5px 99D100' }}>#########</span>
+            {'     '}
             ##
           </dd>
 
           <dt>React</dt>
           <dd>
-            ##{" "}
-            <span style={{ color: "#00DE12", textShadow: "0 0 5px #00DE12" }}>
-              ############
-            </span>
-            {"  "}
+            ## <span style={{ color: '#00DE12', textShadow: '0 0 5px #00DE12' }}>############</span>
+            {'  '}
             ##
           </dd>
 
           <dt>General web development</dt>
           <dd>
-            ##{" "}
-            <span style={{ color: "#5BD100", textShadow: "0 0 5px 5BD100" }}>
-              #########
-            </span>
-            {"     "}
+            ## <span style={{ color: '#5BD100', textShadow: '0 0 5px 5BD100' }}>#########</span>
+            {'     '}
             ##
           </dd>
         </dl>
@@ -378,35 +317,27 @@ const Terminal = (props: TerminalProps) => {
     website: (
       <>
         <p>
-          I built this website from scratch using {glow("React")} and{" "}
-          {glow("TypeScript")}. It is a rewrite of my{" "}
+          I built this website from scratch using {glow('React')} and {glow('TypeScript')}. It is a
+          rewrite of my{' '}
           <a
             target="_blank"
             rel="noopener noreferrer"
             href="https://github.com/craig-feldman/personal-website"
           >
             previous
-          </a>{" "}
-          website that used{" "}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://terminal.jcubic.pl/"
-          >
+          </a>{' '}
+          website that used{' '}
+          <a target="_blank" rel="noopener noreferrer" href="https://terminal.jcubic.pl/">
             JQuery Terminal Plugin
-          </a>{" "}
-          (and some inspiration from{" "}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="http://www.ronniepyne.com"
-          >
+          </a>{' '}
+          (and some inspiration from{' '}
+          <a target="_blank" rel="noopener noreferrer" href="http://www.ronniepyne.com">
             Ronnie Pyne
           </a>
           ).
         </p>
         <p>
-          The source code for this site can be found on{" "}
+          The source code for this site can be found on{' '}
           <a
             target="_blank"
             rel="noopener noreferrer"
@@ -414,9 +345,8 @@ const Terminal = (props: TerminalProps) => {
           >
             GitHub
           </a>
-          . Feel free to use this website for inspiration, or go ahead and copy
-          some of the code! If you do, all I ask is that you give this site a
-          mention :)
+          . Feel free to use this website for inspiration, or go ahead and copy some of the code! If
+          you do, all I ask is that you give this site a mention :)
         </p>
       </>
     ),
@@ -426,12 +356,8 @@ const Terminal = (props: TerminalProps) => {
     // Store a record of this command with a ref to allow us to scroll it into view.
     // Note: We use a ref callback here because setting the ref directly, then clearing output seems to set the ref to null.
     const commandRecord = (
-      <div
-        ref={(el) => (scrollRef.current = el)}
-        className="terminal-command-record"
-      >
-        <span className="terminal-prompt">{terminalPrompt}</span>{" "}
-        <span>{input}</span>
+      <div ref={el => (scrollRef.current = el)} className="terminal-command-record">
+        <span className="terminal-prompt">{terminalPrompt}</span> <span>{input}</span>
       </div>
     );
 
@@ -459,77 +385,69 @@ const Terminal = (props: TerminalProps) => {
       ]);
     } else if (isUtilityCommand(inputCommand)) {
       switch (inputCommand) {
-        case "clear": {
+        case 'clear': {
           setOutput([]);
           break;
         }
-        case "all": {
+        case 'all': {
           // Output all commands in a custom order.
           const allCommandsOutput = [
-            "about",
-            "awards",
-            "skills",
-            "projects",
-            "repo",
-            "contact",
-            "website",
-          ].map((command) => (
+            'about',
+            'awards',
+            'skills',
+            'projects',
+            'repo',
+            'contact',
+            'website',
+          ].map(command => (
             <>
               <div>
-                <span className="terminal-prompt">--</span>{" "}
-                <span>{command}</span>
+                <span className="terminal-prompt">--</span> <span>{command}</span>
               </div>
-              <div className="terminal-command-output">
-                {commands[command as EchoCommand]}
-              </div>
+              <div className="terminal-command-output">{commands[command as EchoCommand]}</div>
             </>
           ));
 
           setOutput([commandRecord, ...allCommandsOutput]);
           break;
         }
-        case "download_cv": {
+        case 'download_cv': {
           setOutput([...output, commandRecord]);
-          downloadFile("CV.pdf", "Craig Feldman - Curriculum Vitae.pdf");
+          downloadFile('CV.pdf', 'Craig Feldman - Curriculum Vitae.pdf');
           break;
         }
       }
     }
   };
 
-  const getHistory = (direction: "up" | "down") => {
+  const getHistory = (direction: 'up' | 'down') => {
     let updatedIndex;
-    if (direction === "up") {
+    if (direction === 'up') {
       updatedIndex = historyIndex === 0 ? 0 : historyIndex - 1;
     } else {
-      updatedIndex =
-        historyIndex === history.length ? history.length : historyIndex + 1;
+      updatedIndex = historyIndex === history.length ? history.length : historyIndex + 1;
     }
     setHistoryIndex(updatedIndex);
-    return updatedIndex === history.length ? "" : history[updatedIndex];
+    return updatedIndex === history.length ? '' : history[updatedIndex];
   };
 
   const getAutocomplete = (input: string) => {
-    const matchingCommands = allCommands.filter((c) => c.startsWith(input));
+    const matchingCommands = allCommands.filter(c => c.startsWith(input));
     if (matchingCommands.length === 1) {
       return matchingCommands[0];
     } else {
       const commandRecord = (
-        <div
-          ref={(el) => (scrollRef.current = el)}
-          className="terminal-command-record"
-        >
-          <span className="terminal-prompt">{terminalPrompt}</span>{" "}
-          <span>{input}</span>
+        <div ref={el => (scrollRef.current = el)} className="terminal-command-record">
+          <span className="terminal-prompt">{terminalPrompt}</span> <span>{input}</span>
         </div>
       );
-      setOutput([...output, commandRecord, matchingCommands.join("    ")]);
+      setOutput([...output, commandRecord, matchingCommands.join('    ')]);
       return input;
     }
   };
 
   const focusOnInput = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === "Tab") {
+    if (event.key === 'Tab') {
       // Prevent tab from moving focus
       event.preventDefault();
     }
@@ -540,9 +458,7 @@ const Terminal = (props: TerminalProps) => {
     <div className="terminal-container" tabIndex={-1} onKeyDown={focusOnInput}>
       <div className="terminal-content">
         {banner && <Banner banner={banner} />}
-        {welcomeMessage && (
-          <WelcomeMessage message={welcomeMessage} inputRef={inputRef} />
-        )}
+        {welcomeMessage && <WelcomeMessage message={welcomeMessage} inputRef={inputRef} />}
         <TerminalOutput outputs={output} />
         <InputArea
           setOutput={setOutput}

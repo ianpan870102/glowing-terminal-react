@@ -12,7 +12,7 @@
   line-height: 20px;
   white-space: pre-wrap;
   color: #aaa;
-  font-family: monospace;
+  font-family: 'Consolas', 'Hack', 'Source Code Pro', 'Menlo', monospace;
   display: flex;
   flex-direction: column;
 }
@@ -60,7 +60,7 @@
 }
 
 .terminal-command-output dd::before {
-  content: "- ";
+  content: '- ';
 }
 
 .terminal-command-output ul {
